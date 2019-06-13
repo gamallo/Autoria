@@ -5,7 +5,7 @@ It uses the mean of 4 distance measures (perplexity, kullbackleibler, ranking, a
 
 ## Requirements:
 * Linux, Bash, Perl
-
+* Perl module: Math::KullbackLeibler::Discrete [Alberto Simões](https://metacpan.org/author/AMBS). 
 ## How to use:
 
 ```
