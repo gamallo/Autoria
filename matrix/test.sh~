@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TREINO="../corpus/train"
+PROG="./scripts"
+MODEL="./freqs"
+
+Target=$1
+
+cat $TREINO/$Target |~/Linguakit-master/linguakit tagger es  |$PROGS/tagged2freq.perl >  $MODEL/"freq_"$Target 

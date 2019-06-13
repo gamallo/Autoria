@@ -1,0 +1,7 @@
+0.3731344 galdos_desheredada.txt
+0.5634334 galdos_amigo_manso.txt
+0.6455224 galdos_marianela.txt
+0.6492544 clarin_regenta.txt
+0.7425374 clarin_unico_hijo.txt
+0.9365674 galdos_trafalgar.txt
+1.0000004 cervantes_quijote.txt

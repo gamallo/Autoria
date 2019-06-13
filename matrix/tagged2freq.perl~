@@ -1,0 +1,24 @@
+#!/usr/bin/perl -w
+
+$doc = shift(@ARGV);
+
+$lema="";
+while (my $line = <STDIN>) {
+
+     ($pal, $lema, $tag) = split(" ", $line);
+     if ( $pal =~ /http/){next}    
+
+     $pal = lc ($pal);
+     $Neg{$pal}++ if ($tag =~ /^V/ || $tag =~ /^JJ/ || $tag eq "NN");
+     $Pos{$pal}++ if ($tag =~ /^DEPR/); 
+}
+  
+
+foreach my $p (keys %Neg) {
+    print "$doc $p $Neg{$p} NEG\n";
+
+}
+foreach my $p (keys %Pos) {
+    print "$doc $p $Pos{$p} POS\n";
+
+}

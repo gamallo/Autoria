@@ -1,0 +1,7 @@
+1.250000 clarin_unico_hijo.txt
+3.000000 galdos_desheredada.txt
+3.750000 galdos_fortunata.txt
+3.750000 galdos_marianela.txt
+4.750000 galdos_amigo_manso.txt
+5.000000 galdos_trafalgar.txt
+6.500000 cervantes_quijote.txt

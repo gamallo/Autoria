@@ -1,0 +1,108 @@
+#!/usr/bin/perl
+
+
+
+$file = shift(@ARGV);
+open (FILE, $file) or die "O ficheiro nao pode ser aberto: $!\n";
+
+$NumberTokens = shift(@ARGV);
+
+$freq=0;
+$rank = 1;
+
+while ($line = <FILE>) {
+      chomp($line);
+    if ($rank <= $NumberTokens){
+      ($freq, $ngram) = split (" ", $line) ;
+      
+      ($a, $b, $c, $d) = split ("_", $ngram);
+      $tetra = $a . $b . $c . $d;
+      $tri = $a . $b . $c ;
+      $bi = $a . $b  ;
+      $uni = $a;
+      $Tetra{$tetra} = $rank;
+      $Tri{$tri} = $rank;
+      $Bi{$bi} = $rank;
+      $Uni{$uni} = $rank;
+    }
+    $rank++;
+}
+
+
+$rank=1;
+while ($line = <STDIN>) {
+    if ($rank <= $NumberTokens){
+      chomp($line);
+      
+      ($freq, $ngram) = split (" ", $line) ;
+      
+      ($a, $b, $c, $d) = split ("_", $ngram);
+      $tetra = $a . $b . $c . $d;
+      $tri = $a . $b . $c ;
+      $bi = $a . $b  ;
+      $uni = $a;
+    
+    
+
+      if ($Tetra{$tetra}) {
+         $valor_tetra += abs ($Tetra{$tetra} - $rank)  ;
+         #$valor_tetra += Min ($Tetra{$tetra} , $rank)  ;
+         # $valor_tetra += $rank  ;
+
+          #print STDERR "$tetra - $valor_tetra - $Tetra{$tetra}\n" ;
+	  $countTetra++;
+          #$norm +=  Min ($Tetra{$tetra} , $rank)  ;
+	  $norm +=  $rank  ;
+      }
+      else {
+         #$valor_tetra += Max ($Tetra{$tetra} , $rank) ;
+         $valor_tetra += abs ($NumberTokens - $rank) ;
+         #$valor_tetra += abs ($NumberTokens -  Min ($Tetra{$tetra} , $rank)) ;
+         #print STDERR "1. $tetra - #$valor_tetra# - #$rank#  #$NumberTokens# \n" ;
+	 
+     }
+    
+      
+   }
+   
+   $rank++ ;
+  
+}
+
+
+$dist =  ($valor_tetra / $countTetra) ;
+$dist2 =  ($valor_tetra / $norm) ;
+#$dist =  ($countTetra / $mean) ;
+print STDERR "#$valor_tetra# -- #$countTetra#\n";
+
+#printf "Basic: %d -- Ranked: %.3f -- Ranked2: %.3f\n", $countTetra, $dist, $dist2;
+printf "Matched: %d -- Distance: %.3f\n", $countTetra, $dist2;
+
+
+sub Min {
+    local ($x) = $_[0];
+    local ($y) = $_[1];
+
+    if ($x <= $y) {
+      $result = $x
+    }
+    else {
+      $result = $y
+    }
+
+    return $result
+}
+
+sub Max {
+    local ($x) = $_[0];
+    local ($y) = $_[1];
+
+    if ($x >= $y) {
+      $result = $x
+    }
+    else {
+      $result = $y
+    }
+
+    return $result
+}

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#echo "Generating the models"
+sh train.sh  silvio
+
+#echo "Making all possible tests"
+rm z
+for i in ../corpus/test/*; do  file=`basename "$i"`; 
+    sh test.sh silvio $file 500 >> z;
+    			     
+done
+cat x |./normalizarZ.perl |sort -g > zz
