@@ -1,5 +1,7 @@
 # Autoria: Authorship attribution
 
+Pablo Gamallo, Miguel Cavadas (CiTIUS, Universidade de Santiago de Compostela)
+
 ## Description:
 It uses the mean of 4 distance measures (perplexity, kullbackleibler, ranking, and cosine) to compute the distance between the text of an unknown author and the texts of known authors
 
