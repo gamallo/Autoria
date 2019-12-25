@@ -10,4 +10,4 @@ for i in test/*; do  file=`basename "$i"`;
 		     echo "$z $train $file" >> y ;
 		     
 done
-cat y |cut -d " " -f 1,5 |./normalizarZ.perl |sort -g > yy
+cat y |awk '{print $4,$5,$1}' |./normalizarZ.perl |sort -g > yy
