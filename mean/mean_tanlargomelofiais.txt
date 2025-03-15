@@ -1,4 +1,0 @@
-0.886 Claramonte_all.txt
-0.920 Mirar_all.txt
-0.921 Tirso_all.txt
-0.942 Guevara_all.txt
