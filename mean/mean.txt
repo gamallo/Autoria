@@ -1,4 +1,4 @@
-0.250 Claramonte.txt
-0.447 Guevara.txt
-0.463 Mira.txt
-0.564 Tirso.txt
+0.000 Claramonte.txt
+0.583 Tirso.txt
+0.678 Mira.txt
+0.781 Guevara.txt
