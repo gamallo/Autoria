@@ -17,3 +17,6 @@ sh run.sh Desconocido_ElburladordeSevilla.txt
 The final results are in the file `mean/mean.txt`.
 
 The input texts are in directory `corpus/all`
+
+## How to cite:
+Cavadas, Miguel, Pablo Gamallo (2022). Automatic Authorship Attribution in the Work of Tirso de Molina. In Ana Dinu et al. (eds.). Recent Advances in Digital Humanities: Romance Language Applications, Peter Lang Edition, (pp. 185-195). DOI 10.3726/b19920.
