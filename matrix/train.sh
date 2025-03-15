@@ -9,7 +9,7 @@ MODEL_TEST="./test"
 Target=$1
 N=$2
 
-cat $TREINO/$Target |~/Linguakit-master/linguakit tok es  |$PROGS/token2freq.perl $N >  $MODEL_TRAIN/$Target
+cat $TREINO/$Target |perl tokenizer.perl  |$PROGS/token2freq.perl $N >  $MODEL_TRAIN/$Target
 
 for i in  $TEST/*; do echo $i; file=`basename "$i"`; 
 	  cat $i  |perl tokenizer.perl  | $PROGS/token2freq.perl $N >  $MODEL_TEST/$file  

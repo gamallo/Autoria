@@ -29,6 +29,6 @@ while ($line=<STDIN>) {
 }
 
 
-print STDERR "Fim do tokenizer\n";
+#print STDERR "Fim do tokenizer\n";
 
 
