@@ -11,7 +11,7 @@ Size=$3
 
 #echo "criando ngrams: lm = $Target -- teste = $Test"
 #cat $TEST/$Test  |~/Linguakit-master/linguakit key es |cut -f 1 |sed "s/ /@/g" |grep -v "^[A-Z]" > $MODEL/unigram_$Test".ngram"
-cat $TEST/$Test  | perl tokenizer.perl  > $MODEL"/unigram_"$Test".ngram"
+cat $TEST/$Test  |~/Linguakit-master/linguakit tok es  > $MODEL"/unigram_"$Test".ngram"
 
 #echo "$Target -- $Test"
 cat $MODEL/unigram_$Test.ngram |sed "s/ /_/g" |sort |uniq -c |sort -nr > $LEX/$Test".lx"
