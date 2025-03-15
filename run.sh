@@ -1,48 +1,49 @@
 
+
 train=$1
 
-rm corpus/train/*
-rm corpus/test/*
-rm perplexity/models/*
-rm perplexity/corpora/test/*
-rm perplexity/corpora/train/*
-rm kullbackleibler/test/*
-rm kullbackleibler/train/*
+# Remove files from directories
+rm -f corpus/train/*
+rm -f corpus/test/*
+rm -f perplexity/models/*
+rm -f perplexity/corpora/test/*
+rm -f perplexity/corpora/train/*
+rm -f kullbackleibler/test/*
+rm -f kullbackleibler/train/*
 
-
-cp corpus/all/$1 corpus/test/.
+# Copy files for training and testing
+cp corpus/all/"$train" corpus/test/.
 cp corpus/all/* corpus/train/.
-rm corpus/train/$train
+rm -f corpus/train/"$train"
 
+# Run perplexity steps
 echo "perplexity"
-cd perplexity
-sh run_create.sh 10000 test
-sh run_create.sh 35000 train
-sh RUN.sh $train
+(cd perplexity && sh run_create.sh 10000 test)
+(cd perplexity && sh run_create.sh 35000 train)
+(cd perplexity && sh RUN.sh "$train")
 
-cd ../
-rm corpus/train/*
-rm corpus/test/*
-cp corpus/all/$1 corpus/train/.
+# Reset corpus directories
+rm -f corpus/train/*
+rm -f corpus/test/*
+cp corpus/all/"$train" corpus/train/.
 cp corpus/all/* corpus/test/.
-rm corpus/test/$train
+rm -f corpus/test/"$train"
 
-cd ./kullbackleibler
+# Run Kullback-Leibler steps
 echo "KL"
-sh run_create.sh 15000 test
-sh run_create.sh 15000 train
-sh RUN.sh $train
+(cd kullbackleibler && sh run_create.sh 15000 test)
+(cd kullbackleibler && sh run_create.sh 15000 train)
+(cd kullbackleibler && sh RUN.sh "$train")
 
-cd ../ranking
+# Run ranking steps
 echo "ranking" ##N=100
-sh RUN.sh $train
+(cd ranking && sh RUN.sh "$train")
 
-cd ../matrix
+# Run matrix steps
 echo "matrix"
-sh RUN.sh $train 15000
+(cd matrix && sh RUN.sh "$train" 15000)
 
-
-cd ../mean
+# Run mean steps
 echo "mean"
-sh run_mean.sh
+(cd mean && sh run_mean.sh)
 
